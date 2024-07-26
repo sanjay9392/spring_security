@@ -18,7 +18,7 @@ public class AuthController {
 
     @GetMapping("/home")
     public String home(@RequestHeader("Authorization") String token) {
-        String jwt = token.substring(7);
+        String jwt = token;
         if (authService.getJwtUtil().validateToken(jwt)) {
             String username = authService.getJwtUtil().extractUsername(jwt);
             return "Hi " + username;
